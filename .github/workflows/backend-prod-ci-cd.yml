@@ -103,7 +103,7 @@ jobs:
         uses: docker/build-push-action@v5
         id: docker_build
         with:
-          context: .
+          context: backend/spring-routie
           file: ./Dockerfile
           push: true
           tags: |
