@@ -73,13 +73,6 @@ jobs:
           report_paths: '**/build/test-results/test/TEST-*.xml'
           token: ${{ github.token }}
 
-  deploy-new-container:
-    runs-on: ubuntu-latest
-    needs: build-and-test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Login to Github Container Registry
         uses: docker/login-action@v3
         with:
@@ -113,3 +106,4 @@ jobs:
           tags: |
             ghcr.io/${{ env.OWNER_LC }}/routie-practice:latest
             ghcr.io/${{ env.OWNER_LC }}/routie-practice:${{ steps.tag_version.outputs.new_tag }}
+
