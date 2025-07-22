@@ -2,7 +2,7 @@ name: CD on develop branch
 
 on:
   workflow_run:
-    workflows: [ "backend-dev-ci" ]
+    workflows: [ "Build Test on develop branch" ]
     types:
       - completed
 
