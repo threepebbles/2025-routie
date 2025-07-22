@@ -1,14 +1,15 @@
 name: CD on develop branch
 
 on:
-  push:
-    branches: [ "develop" ]
-    paths:
-      - 'backend/**'
+  workflow_run:
+    workflows: [ "backend-dev-ci" ]
+    types:
+      - completed
 
 jobs:
   deploy-to-ec2:
     name: Deploy to EC2
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: [ self-hosted ]
 
     defaults:
